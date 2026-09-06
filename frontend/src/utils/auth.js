@@ -5,7 +5,7 @@ import { apiFetch } from './api';
  * Stores the JWT in localStorage automatically.
  */
 export async function registerUser(displayName, email, password) {
-  const data = await apiFetch('/auth/register', {
+  const data = await apiFetch('/api/auth/register', {
     method: 'POST',
     body: JSON.stringify({ displayName, email, password }),
   });
@@ -20,7 +20,7 @@ export async function registerUser(displayName, email, password) {
  * Stores the JWT in localStorage automatically.
  */
 export async function loginUser(email, password) {
-  const data = await apiFetch('/auth/login', {
+  const data = await apiFetch('/api/auth/login', {
     method: 'POST',
     body: JSON.stringify({ email, password }),
   });
@@ -38,7 +38,7 @@ export async function fetchCurrentUser() {
   const token = localStorage.getItem('autoxp_token');
   if (!token) return null;
   try {
-    return await apiFetch('/auth/me');
+    return await apiFetch('/api/auth/me');
   } catch {
     localStorage.removeItem('autoxp_token');
     return null;
@@ -49,7 +49,7 @@ export async function fetchCurrentUser() {
  * Update user profile fields (displayName, location, phone).
  */
 export async function updateUserProfile(updates) {
-  return apiFetch('/auth/me', {
+  return apiFetch('/api/auth/me', {
     method: 'PATCH',
     body: JSON.stringify(updates),
   });

@@ -21,7 +21,7 @@ export default function PredictPage({ showToast, onEnlistWithPrice }) {
         engine: parseFloat(form.engine), max_power: parseFloat(form.max_power), seats: parseFloat(form.seats),
         brand: form.brand, model: form.model, seller_type: form.seller_type, fuel: form.fuel, transmission: form.transmission, owner: form.owner,
       };
-      const data = await apiFetch('/predictions', { method:'POST', body:JSON.stringify(body) });
+      const data = await apiFetch('/api/predictions', { method:'POST', body:JSON.stringify(body) });
       setRes(data);
       showToast('Market analysis complete.');
     } catch(e) {

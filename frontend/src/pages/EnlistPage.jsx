@@ -31,7 +31,7 @@ export default function EnlistPage({ showToast, setPage, addListing, initData })
         brand: form.brand, model: form.model, seller_type: 'Individual',
         fuel: form.fuel, transmission: form.trans, owner: 'First Owner',
       };
-      const data = await apiFetch('/predictions', { method: 'POST', body: JSON.stringify(body) });
+      const data = await apiFetch('/api/predictions', { method: 'POST', body: JSON.stringify(body) });
       setForm({ ...form, price: Math.round(data.estimated_price_inr) });
       showToast('AI Valuation applied!');
     } catch {
