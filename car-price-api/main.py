@@ -15,7 +15,7 @@ ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:3000",
-    "https://frontend-five-mu-60.vercel.app",
+    "https://frontend-kohl-seven-pham1ldw89.vercel.app",
 ]
 
 class CustomCORSMiddleware(BaseHTTPMiddleware):
