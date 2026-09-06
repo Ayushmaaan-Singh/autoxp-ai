@@ -1,0 +1,31 @@
+# Secrets and local config – never go into the image
+.env
+.env.*
+
+# Python artifacts
+.venv
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Git
+.git
+.gitignore
+
+# Logs
+*.log
+
+# Dev/test directories
+tests/__pycache__
+.pytest_cache
+
+# Windows artifacts
+Thumbs.db
+
+# Dataset CSV files (large, not needed at runtime)
+*.csv
+
+# NOTE: car_price_pipeline.joblib is intentionally NOT excluded.
+# The ML model must be present in the Docker image.
