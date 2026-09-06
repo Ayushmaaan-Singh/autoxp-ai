@@ -35,7 +35,11 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+      allow_origins=[
+        "http://localhost:5173",          # Vite dev server
+        "http://localhost:3000",          # fallback
+        "https://frontend-five-mu-60.vercel.app",                              # temporary: allow all (for testing)
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
