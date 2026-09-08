@@ -8,8 +8,7 @@ from dotenv import load_dotenv
 from database import connect_db, close_db
 from controllers import auth_router, listings_router, predictions_router
 from services.predictions import PredictionService
-
-load_dotenv()
+import database  # however you expose the client/db instance
 
 ALLOWED_ORIGINS = [
     "http://localhost:5173",
@@ -69,6 +68,10 @@ def read_root():
 async def health_check():
     if not PredictionService.is_model_loaded():
         raise HTTPException(status_code=503, detail="ML model is unavailable.")
+    try:
+        await database.client.admin.command("ping")
+    except Exception:
+        raise HTTPException(status_code=503, detail="Database unreachable.")
     return {"status": "ok", "version": "3.0.0"}
 
 
